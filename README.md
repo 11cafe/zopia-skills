@@ -6,10 +6,26 @@ Zopia AI 视频创作技能 — 通过 [Zopia](https://zopia.ai) 平台的 AI Ag
 
 ## 安装
 
-### Claude Code
+### 通过 npx 安装（推荐）
 
 ```bash
-npx claude-code skill add 11cafe/zopia-skills
+npx skills add 11cafe/zopia-skills
+```
+
+> [`skills`](https://github.com/vercel-labs/skills) 是 Vercel Labs 开发的跨平台技能安装 CLI，支持 Claude Code、Gemini CLI、Codex、Cursor 等 40+ 个 Agent。
+
+安装到指定 Agent：
+
+```bash
+npx skills add 11cafe/zopia-skills -a claude-code
+```
+
+### 通过 OpenClaw 安装
+
+在 [OpenClaw](https://openclaw.ai) 技能市场搜索 `zopia-skill`，或使用命令行：
+
+```bash
+npx clawhub install zopia-skill
 ```
 
 ### 手动安装
@@ -18,7 +34,12 @@ npx claude-code skill add 11cafe/zopia-skills
 git clone https://github.com/11cafe/zopia-skills.git
 ```
 
-将 `SKILL.md` 和 `scripts/` 目录放入你的 Claude Code 技能目录即可。
+将 `SKILL.md` 和 `scripts/` 目录复制到对应的技能目录：
+
+| 范围 | 路径 |
+|------|------|
+| 个人全局 | `~/.claude/skills/zopia-skill/` |
+| 项目级别 | `.claude/skills/zopia-skill/` |
 
 ## 配置
 
@@ -59,7 +80,6 @@ export ZOPIA_BASE_URL="https://jaaz.zopia.ai"  # 可选，默认值即可
 
 | 模型 | 名称 |
 |------|------|
-| `generate_video_by_seedance_20` | Stardust 2.0 |
 | `generate_video_by_kling_o3` | Kling O3 |
 | `generate_video_by_kling_v3_0` | Kling V3.0 |
 | `generate_video_by_hailuo_02` | Hailuo 2.3 |
