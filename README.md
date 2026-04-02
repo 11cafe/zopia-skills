@@ -47,7 +47,7 @@ git clone https://github.com/11cafe/zopia-skills.git
 
 ```bash
 export ZOPIA_ACCESS_KEY="zopia-xxxxxxxxxxxx"   # 必需，30天有效
-export ZOPIA_BASE_URL="https://jaaz.zopia.ai"  # 可选，默认值即可
+export ZOPIA_BASE_URL="https://zopia.ai"  # 可选，默认值即可
 ```
 
 仅依赖 Python 标准库，无需安装第三方包。需要 `python3` 可用。

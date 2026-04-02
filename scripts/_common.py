@@ -30,7 +30,7 @@ def _get_access_key() -> str:
 
 
 def _get_base_url() -> str:
-    return os.environ.get("ZOPIA_BASE_URL", "https://jaaz.zopia.ai").rstrip("/")
+    return os.environ.get("ZOPIA_BASE_URL", "https://zopia.ai").rstrip("/")
 
 
 # ---------------------------------------------------------------------------
