@@ -84,9 +84,11 @@ python3 {baseDir}/scripts/save_settings.py --base-id BASE_ID \
 
 | 模型 ID | 名称 | 支持的方式 | 默认 |
 |---------|------|-----------|------|
-| `generate_video_by_seedance_20` | Stardust 2.0 ⭐ | n_grid, video_ref, multi_ref, multi_ref_v2 | video_ref |
+| `generate_video_by_seedance_20` | Seedance 2.0 Pro ⭐ | n_grid, video_ref, multi_ref, multi_ref_v2 | video_ref |
+| `generate_video_by_seedance_20_fast` | Seedance 2.0 Fast | n_grid, video_ref, multi_ref, multi_ref_v2 | video_ref |
 | `generate_video_by_kling_o3` | Kling O3 | start_frame, n_grid, multi_ref, multi_ref_v2 | n_grid |
 | `generate_video_by_kling_v3_0` | Kling V3.0 | start_frame, n_grid | n_grid |
+| `generate_video_by_pixverse_c1` | PixVerse C1 | start_frame, multi_ref | start_frame |
 | `generate_video_by_hailuo_02` | Hailuo 2.3 | start_frame | start_frame |
 | `generate_video_by_wan26_i2v` | Wan 2.6 | start_frame | start_frame |
 | `generate_video_by_wan26_i2v_flash` | Wan 2.6 Flash | start_frame | start_frame |
