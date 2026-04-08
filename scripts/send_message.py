@@ -19,7 +19,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from _common import print_json, send_message
+from _common import build_project_url, print_json, send_message
 
 
 def main() -> None:
@@ -36,6 +36,8 @@ def main() -> None:
         message=args.message,
         session_id=args.session_id,
     )
+    sid = result.get("session_id", "")
+    result["projectUrl"] = build_project_url(args.base_id, sid)
     print_json(result)
 
 

@@ -16,7 +16,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from _common import list_projects, print_json
+from _common import build_project_url, list_projects, print_json
 
 
 def main() -> None:
@@ -26,6 +26,8 @@ def main() -> None:
     args = parser.parse_args()
 
     result = list_projects(args.page, args.page_size)
+    for item in result.get("data", []):
+        item["projectUrl"] = build_project_url(item.get("id", ""))
     print_json(result)
 
 

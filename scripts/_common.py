@@ -182,9 +182,12 @@ def get_render_status(base_id: str, episode_id: str, render_id: str | None = Non
     return api_get(f"/api/v1/base/{base_id}/episode/{episode_id}/render", params or None)
 
 
-def build_project_url(base_id: str) -> str:
+def build_project_url(base_id: str, session_id: str | None = None) -> str:
     """构造项目的 Web 访问 URL。"""
-    return f"{_get_base_url()}/base/{base_id}"
+    url = f"{_get_base_url()}/base/{base_id}"
+    if session_id:
+        url = f"{url}?session_id={session_id}"
+    return url
 
 
 # ---------------------------------------------------------------------------
