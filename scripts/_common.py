@@ -166,6 +166,22 @@ def get_balance() -> dict[str, Any]:
     return api_get("/api/billing/getBalance")
 
 
+def trigger_render(base_id: str, episode_id: str, show_watermark: bool = False) -> dict[str, Any]:
+    """触发 episode 视频合成渲染（异步），返回 {render_id, status}。"""
+    return api_post(
+        f"/api/v1/base/{base_id}/episode/{episode_id}/render",
+        {"show_watermark": show_watermark},
+    )
+
+
+def get_render_status(base_id: str, episode_id: str, render_id: str | None = None) -> dict[str, Any]:
+    """查询渲染状态，返回 {status, render_id?, progress?, video_url?, error?}。"""
+    params: dict[str, str] = {}
+    if render_id:
+        params["render_id"] = render_id
+    return api_get(f"/api/v1/base/{base_id}/episode/{episode_id}/render", params or None)
+
+
 def build_project_url(base_id: str) -> str:
     """构造项目的 Web 访问 URL。"""
     return f"{_get_base_url()}/base/{base_id}"

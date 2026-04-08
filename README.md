@@ -102,6 +102,7 @@ export ZOPIA_BASE_URL="https://zopia.ai"  # 可选，默认值即可
 | `get_balance.py` | 查询余额 |
 | `list_projects.py` | 列出所有项目 |
 | `manage_episodes.py` | 管理剧集 |
+| `render_episode.py` | 合成最终视频（MP4） |
 
 ## License
 

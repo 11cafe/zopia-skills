@@ -51,6 +51,7 @@ export ZOPIA_BASE_URL="https://zopia.ai"  # 可选
 | `get_balance.py` | 余额查询 | — |
 | `list_projects.py` | 列出项目 | `--page` `--page-size` |
 | `manage_episodes.py` | 剧集管理 | `list\|create\|delete` |
+| `render_episode.py` | 合成最终视频 | `trigger\|status` `--base-id` `--episode-id` `--poll` |
 
 ## 项目设置参考
 
@@ -179,6 +180,26 @@ python3 {baseDir}/scripts/save_settings.py --base-id BASE_ID \
 - 创建新剧集前，建议先确认当前剧集已完成（`status: "completed"`）
 - 可以随时用 `manage_episodes.py list --base-id B` 查看所有剧集状态
 - 删除剧集是不可逆操作，会清除该集所有内容
+
+### 场景 5：将分镜视频合成为最终 MP4
+
+所有分镜视频生成完毕后，可一键触发云端渲染，将所有片段按时间轴顺序合成为完整 MP4 文件。
+
+```
+1. render_episode.py trigger \
+     --base-id B --episode-id E            → 拿到 render_id，渲染开始（异步）
+2. render_episode.py status \
+     --base-id B --episode-id E \
+     --render-id RENDER_ID --poll          → 自动轮询，完成后输出 video_url
+```
+
+**触发时机：** 用户明确要求「导出视频」「合成 MP4」「生成完整视频」时才触发。分镜视频生成阶段不要触发。
+
+**渲染前提：** storyboard 中至少有一个分镜有 video_urls（即已完成视频生成），否则渲染内容为空。
+
+**完成标志：** `status: "completed"` 且返回 `video_url`（S3 直链，可直接下载或分享）。
+
+**轮询说明：** 渲染由 Remotion Lambda 执行，通常需要 1–5 分钟，`--poll` 参数每 8 秒检查一次进度（`progress` 字段 0→1），超时上限 10 分钟。
 
 ---
 
